@@ -21,6 +21,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ButtonDefaults.outlinedButtonBorder
+import androidx.compose.material3.ButtonDefaults.outlinedButtonColors
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -131,6 +134,23 @@ fun Cadastro() {
             Spacer(modifier = Modifier.height(25.dp))
             Serie()
             Spacer(modifier = Modifier.height(25.dp))
+            OutlinedButton(
+                onClick = {},
+                colors = outlinedButtonColors(
+                    containerColor = Color(46,46,46),
+                ),
+
+                modifier = Modifier
+                    .size(height = 60.dp, width = 120.dp)
+                    .align(Alignment.CenterHorizontally)
+            ) {
+                Text(
+                    text = "Enviar",
+                    color = Orange,
+                    fontSize = 20.sp
+                )
+            }
+/*
             Button(
                 onClick = {},
                 colors = ButtonDefaults.buttonColors(containerColor = Orange),
@@ -144,6 +164,8 @@ fun Cadastro() {
                     fontSize = 20.sp
                 )
             }
+
+ */
         }
     }
 }
