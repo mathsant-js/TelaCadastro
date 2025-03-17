@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -23,6 +24,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -35,6 +37,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextOverflow
@@ -66,6 +69,7 @@ fun Cadastro() {
     Column (
         Modifier
             .fillMaxHeight()
+            .background(Color(23,23,23))
     ) {
         Box(
             modifier = Modifier
@@ -99,7 +103,8 @@ fun Cadastro() {
                 text = "Tela de Cadastro",
                 fontSize = 35.sp, fontWeight = FontWeight(700),
                 maxLines = 2,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis,
+                color = Orange
             )
         }
         Column (
@@ -113,7 +118,7 @@ fun Cadastro() {
                 fontWeight = FontWeight(700),
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
-                color = Color.Black,
+                color = Orange,
                 modifier = Modifier
                     .padding(bottom = 40.dp)
                     .align(Alignment.CenterHorizontally)
@@ -126,47 +131,116 @@ fun Cadastro() {
             Spacer(modifier = Modifier.height(25.dp))
             Serie()
             Spacer(modifier = Modifier.height(25.dp))
-            Enviar()
+            Button(
+                onClick = {},
+                colors = ButtonDefaults.buttonColors(containerColor = Orange),
+                modifier = Modifier
+                    .size(height = 60.dp, width = 120.dp)
+                    .align(Alignment.CenterHorizontally)
+            ) {
+                Text(
+                    text = "Enviar",
+                    color = Color.White,
+                    fontSize = 20.sp
+                )
+            }
         }
     }
 }
 
 @Composable
 fun Nome() {
-    var text by remember { mutableStateOf(TextFieldValue("")) }
+    var nome by remember { mutableStateOf(TextFieldValue("")) }
     TextField(
-        value = text,
+        value = nome,
         onValueChange = {
-            text = it
+            nome = it
         },
         label = { Text(text = "Nome") },
         placeholder = { Text(text = "Digite o seu nome") },
+        colors = TextFieldDefaults.colors(
+            unfocusedIndicatorColor = Orange,
+            unfocusedLabelColor = Orange,
+            unfocusedContainerColor = Color(46,46,46),
+            unfocusedTextColor = Color.White,
+
+            focusedIndicatorColor = Orange,
+            focusedLabelColor = Orange,
+            focusedContainerColor = Color(60,60,60),
+            focusedTextColor = Color.White,
+
+            cursorColor = Orange
+
+        ),
+        keyboardOptions = KeyboardOptions.Default.copy(
+            keyboardType = KeyboardType.Text,
+            // Serve para quando der o enter ele ir para o próximo campo
+            imeAction = ImeAction.Next
+        )
     )
 }
 
 @Composable
 fun Telefone() {
-    var text by remember { mutableStateOf(TextFieldValue("")) }
+    var telefone by remember { mutableStateOf(TextFieldValue("")) }
     TextField(
-        value = text,
+        value = telefone,
         onValueChange = {
-            text = it
+            telefone = it
         },
         label = { Text(text = "Telefone") },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        colors = TextFieldDefaults.colors(
+            unfocusedIndicatorColor = Orange,
+            unfocusedLabelColor = Orange,
+            unfocusedContainerColor = Color(46,46,46),
+            unfocusedTextColor = Color.White,
+
+            focusedIndicatorColor = Orange,
+            focusedLabelColor = Orange,
+            focusedContainerColor = Color(60,60,60),
+            focusedTextColor = Color.White,
+
+            cursorColor = Orange
+
+        ),
+        keyboardOptions = KeyboardOptions.Default.copy(
+            keyboardType = KeyboardType.Number,
+            // Serve para quando der o enter ele ir para o próximo campo
+            imeAction = ImeAction.Next
+        ),
         placeholder = { Text(text = "Digite o seu telefone") },
+
     )
 }
 
 @Composable
 fun Curso() {
-    var text by remember { mutableStateOf(TextFieldValue("")) }
+    var curso by remember { mutableStateOf(TextFieldValue("")) }
     TextField(
-        value = text,
+        value = curso,
         onValueChange = {
-            text = it
+            curso = it
         },
         label = { Text(text = "Curso") },
+        colors = TextFieldDefaults.colors(
+            unfocusedIndicatorColor = Orange,
+            unfocusedLabelColor = Orange,
+            unfocusedContainerColor = Color(46,46,46),
+            unfocusedTextColor = Color.White,
+
+            focusedIndicatorColor = Orange,
+            focusedLabelColor = Orange,
+            focusedContainerColor = Color(60,60,60),
+            focusedTextColor = Color.White,
+
+            cursorColor = Orange
+
+        ),
+        keyboardOptions = KeyboardOptions.Default.copy(
+            keyboardType = KeyboardType.Text,
+            // Serve para quando der o enter ele ir para o próximo campo
+            imeAction = ImeAction.Next
+        ),
         placeholder = { Text(text = "Digite o seu curso") },
     )
 }
@@ -180,23 +254,25 @@ fun Serie() {
             text = it
         },
         label = { Text(text = "Série") },
+        colors = TextFieldDefaults.colors(
+            unfocusedIndicatorColor = Orange,
+            unfocusedLabelColor = Orange,
+            unfocusedContainerColor = Color(46,46,46),
+            unfocusedTextColor = Color.White,
+
+            focusedIndicatorColor = Orange,
+            focusedLabelColor = Orange,
+            focusedContainerColor = Color(60,60,60),
+            focusedTextColor = Color.White,
+
+            cursorColor = Orange
+
+        ),
+        keyboardOptions = KeyboardOptions.Default.copy(
+            keyboardType = KeyboardType.Text,
+            // Serve para quando der o enter ele ir para o próximo campo
+            imeAction = ImeAction.Done
+        ),
         placeholder = { Text(text = "Digite a sua série") },
     )
-}
-
-@Composable
-fun Enviar() {
-    Button(
-        onClick = { /* nada ainda */},
-        colors = ButtonDefaults.buttonColors(containerColor = Color.Cyan),
-        modifier = Modifier
-            .size(height = 60.dp, width = 120.dp)
-            .align(Alignment.CenterHorizontally)
-    ) {
-        Text(
-            text = "Enviar",
-            color = Color.White,
-            fontSize = 20.sp
-        )
-    }
 }
